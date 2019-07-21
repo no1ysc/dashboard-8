@@ -9,48 +9,46 @@ DELETE myfile
 PUT myfile
 {
   "mappings": {
-    "myfile": {
-      "properties": {
-        "Country": {
-          "type": "keyword"
-        },
-        "Item Type": {
-          "type": "keyword"
-        },
-        "Order Date": {
-          "type": "date",
-          "format": "MM/dd/yyyy"
-        },
-        "Order ID": {
-          "type": "integer"
-        },
-        "Order Priority": {
-          "type": "keyword"
-        },
-        "Region": {
-          "type": "keyword"
-        },
-        "Sales Channel": {
-          "type": "keyword"
-        },
-        "Total Cost": {
-          "type": "float"
-        },
-        "Total Profit": {
-          "type": "float"
-        },
-        "Total Revenue": {
-          "type": "float"
-        },
-        "Unit Cost": {
-          "type": "float"
-        },
-        "Unit Price": {
-          "type": "float"
-        },
-        "Units Sold": {
-          "type": "integer"
-        }
+    "properties": {
+      "Country": {
+        "type": "keyword"
+      },
+      "Item Type": {
+        "type": "keyword"
+      },
+      "Order Date": {
+        "type": "date",
+        "format": "M/d/yyyy"
+      },
+      "Order ID": {
+        "type": "integer"
+      },
+      "Order Priority": {
+        "type": "keyword"
+      },
+      "Region": {
+        "type": "keyword"
+      },
+      "Sales Channel": {
+        "type": "keyword"
+      },
+      "Total Cost": {
+        "type": "float"
+      },
+      "Total Profit": {
+        "type": "float"
+      },
+      "Total Revenue": {
+        "type": "float"
+      },
+      "Unit Cost": {
+        "type": "float"
+      },
+      "Unit Price": {
+        "type": "float"
+      },
+      "Units Sold": {
+        "type": "integer"
       }
     }
   }
@@ -65,12 +63,12 @@ GET myfile/_mapping
 
 # logstash - conf
 ```
-$ vi file.conf
+$ vim file.conf
 ```
 ```
 input {
   file {
-    path => "/home/ec2-user/data/5000_Sales_Records.csv"
+    path => "/home/ec2-user/dashboard-8/data/5000_Sales_Records.csv"
     start_position => "beginning"
     #sincedb_path => "/dev/null" #only for develop
   }
@@ -82,7 +80,7 @@ filter {
     autodetect_column_names => true
   }
   date {
-    match => ["Ship Date", "MM/dd/YYYY", "ISO8601"]
+    match => ["Ship Date", "M/d/YYYY", "ISO8601"]
     timezone => "Asia/Seoul"
     target => "Ship Date"
   }
@@ -95,7 +93,6 @@ output {
   elasticsearch {
     hosts => ["ec2-13-209-172-77.ap-northeast-2.compute.amazonaws.com:9200"]
     index => "myfile"
-    document_type => "myfile"
   }
   #stdout { }  #only for develop
 }
