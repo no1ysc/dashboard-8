@@ -103,4 +103,6 @@ $ bin/logstash -f file.conf
 ```
 
 # scripted field
-doc['Ship Date'].date.dayOfYear - doc['Order Date'].date.dayOfYear
+```
+doc['Ship Date'].value.dayOfYear - doc['Order Date'].value.dayOfYear
+```
