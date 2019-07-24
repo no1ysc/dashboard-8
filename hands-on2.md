@@ -6,44 +6,42 @@ DELETE myrdbms
 PUT myrdbms
 {
   "mappings": {
-    "myrdbms": {
-      "properties": {
-        "age": {
-          "type": "integer"
-        },
-        "cabin": {
-          "type": "keyword"
-        },
-        "embarked": {
-          "type": "keyword"
-        },
-        "fare": {
-          "type": "float"
-        },
-        "name": {
-          "type": "text"
-        },
-        "parch": {
-          "type": "integer"
-        },
-        "passengerid": {
-          "type": "integer"
-        },
-        "pclass": {
-          "type": "keyword"
-        },
-        "sex": {
-          "type": "keyword"
-        },
-        "sibsp": {
-          "type": "integer"
-        },
-        "survived": {
-          "type": "keyword"
-        },
-        "ticket": {
-          "type": "keyword"
-        }
+    "properties": {
+      "age": {
+        "type": "integer"
+      },
+      "cabin": {
+        "type": "keyword"
+      },
+      "embarked": {
+        "type": "keyword"
+      },
+      "fare": {
+        "type": "float"
+      },
+      "name": {
+        "type": "text"
+      },
+      "parch": {
+        "type": "integer"
+      },
+      "passengerid": {
+        "type": "integer"
+      },
+      "pclass": {
+        "type": "keyword"
+      },
+      "sex": {
+        "type": "keyword"
+      },
+      "sibsp": {
+        "type": "integer"
+      },
+      "survived": {
+        "type": "keyword"
+      },
+      "ticket": {
+        "type": "keyword"
       }
     }
   }
